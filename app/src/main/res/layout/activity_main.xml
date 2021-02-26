@@ -48,11 +48,11 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnGuest"
+                    android:id="@+id/btnRegistrar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Invitat" />
+                    android:text="Registrar" />
 
                 <Button
                     android:id="@+id/btnLogin"
@@ -61,6 +61,12 @@
                     android:layout_weight="1"
                     android:text="Login" />
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btnInvitado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Invitado" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
