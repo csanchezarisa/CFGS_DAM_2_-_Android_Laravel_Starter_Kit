@@ -22,10 +22,10 @@ public class CrudActivity extends AppCompatActivity {
 
     // Constantes para hacer la llamada a la activity
     // que hace la petición
-    public static int INDEX = 1;
-    public static int SEARCH = 2;
-    public static int UPDATE = 3;
-    public static int DELETE = 4;
+    public static final int INDEX = 1;
+    public static final int SEARCH = 2;
+    public static final int UPDATE = 3;
+    public static final int DELETE = 4;
 
     private String token;
     private Button btnIndex;

@@ -14,6 +14,14 @@ public class ApioClass {
         this.caducidad = caducidad;
     }
 
+    @Override
+    public String toString() {
+        return "\tId = " + id + '\n' +
+                "\tNombre = " + nombre + '\n' +
+                "\tTipo = " + tipo + '\n' +
+                "\tCaducidad = " + caducidad + '\n';
+    }
+
     public int getId() {
         return id;
     }
