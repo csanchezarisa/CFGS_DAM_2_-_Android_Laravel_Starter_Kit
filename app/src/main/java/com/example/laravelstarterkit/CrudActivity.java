@@ -171,7 +171,7 @@ public class CrudActivity extends AppCompatActivity {
      * 'base' configurado */
     private void pruebaDeConexionConToken() {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.setMaxRetriesAndTimeout(1, 5000);
+        client.setMaxRetriesAndTimeout(1, 10000);
 
         // Se añade un Header a la petición, con el token como autenticación
         client.addHeader("Authorization", "Bearer " + this.token);

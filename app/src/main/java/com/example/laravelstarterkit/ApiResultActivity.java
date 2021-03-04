@@ -59,6 +59,8 @@ public class ApiResultActivity extends AppCompatActivity {
 
     private void hacerPeticionApi() {
         AsyncHttpClient client = new AsyncHttpClient();
+        client.setMaxRetriesAndTimeout(1, 10000);
+
         client.addHeader("Authorization", "Bearer " + token);
 
         crearHandlerParaPeticion();

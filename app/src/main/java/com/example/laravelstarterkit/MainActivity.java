@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     /** Hace una petición basica a la api de Laravel para ver si hay conexión */
     private void peticionHttp() {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.setMaxRetriesAndTimeout(1, 4000);
+        client.setMaxRetriesAndTimeout(1, 10000);
         String url = Conexion.URL_BASE + "api/prueba";
 
         client.get(url, new AsyncHttpResponseHandler() {
