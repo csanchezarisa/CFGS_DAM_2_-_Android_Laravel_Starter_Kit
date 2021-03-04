@@ -1,10 +1,12 @@
 package com.example.laravelstarterkit;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,13 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import cz.msebera.android.httpclient.Header;
 
 public class CrudActivity extends AppCompatActivity {
+
+    // Constantes para hacer la llamada a la activity
+    // que hace la petición
+    public static int INDEX = 1;
+    public static int SEARCH = 2;
+    public static int UPDATE = 3;
+    public static int DELETE = 4;
 
     private String token;
     private Button btnIndex;
@@ -47,28 +56,73 @@ public class CrudActivity extends AppCompatActivity {
         btnIndex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startApiResult(INDEX, null);
             }
         });
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int id;
+                try {
+                    id = Integer.parseInt(edtIdSearch.getText().toString());
+                }
+                catch (Exception e) {
+                    id = -1;
+                }
 
+                if (id < 0) {
+                    mostrarToastInvitado("Introduce un ID válido!");
+                    edtIdSearch.findFocus();
+                }
+                else {
+                    String idString = String.valueOf(id);
+                    startApiResult(SEARCH, idString);
+                }
             }
         });
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int id;
+                try {
+                    id = Integer.parseInt(edtIdUpdateDelete.getText().toString());
+                }
+                catch (Exception e) {
+                    id = -1;
+                }
 
+                if (id < 0) {
+                    mostrarToastInvitado("Introduce un ID válido!");
+                    edtIdUpdateDelete.findFocus();
+                }
+                else {
+                    String idString = String.valueOf(id);
+                    startApiResult(UPDATE, idString);
+                }
             }
         });
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int id;
+                try {
+                    id = Integer.parseInt(edtIdUpdateDelete.getText().toString());
+                }
+                catch (Exception e) {
+                    id = -1;
+                }
 
+                if (id < 0) {
+                    mostrarToastInvitado("Introduce un ID válido!");
+                    edtIdUpdateDelete.findFocus();
+                }
+                else {
+                    String idString = String.valueOf(id);
+                    startApiResult(DELETE, idString);
+                }
             }
         });
 
@@ -82,6 +136,8 @@ public class CrudActivity extends AppCompatActivity {
         mostrarToastInvitado("Has accedido como invitado. Solo tienes permisos de lectura");
     }
 
+    /** Muestra un toast largo
+     * @param mensaje String con el contenido del toast */
     private void mostrarToastInvitado(String mensaje) {
         Toast toast = new Toast(this);
         toast.setText(mensaje);
@@ -156,6 +212,9 @@ public class CrudActivity extends AppCompatActivity {
         });
     }
 
+    /** Muestra un alert que no se puede cancelar ni cerrar con el mensaje de error de token
+     * no válido y cierra la activity
+     * @param mensaje String con el contenido del mensaje a mostrar*/
     private void mostrarAlertErrorPermisosToken(String mensaje) {
 
         AlertDialog alert = new AlertDialog.Builder(this).create();
@@ -170,5 +229,20 @@ public class CrudActivity extends AppCompatActivity {
             }
         });
         alert.show();
+    }
+
+    /** Ejecuta la activity ApiResult según el tipo de llamada que se quiera
+     * @param tipoLlamada int con la constante del tipo de llamada que se quiera
+     * hacer
+     * @param id String que puede ser null con los extras (ID) de búsqueda
+     * edición y eliminación*/
+    private void startApiResult(int tipoLlamada, @Nullable String id) {
+        Intent intent = new Intent(getApplicationContext(), ApiResultActivity.class);
+        Bundle data = new Bundle();
+        data.putInt("tipo_llamada", tipoLlamada);
+        if (id == null) id = "";
+        data.putString("id", id);
+        intent.putExtras(data);
+        startActivity(intent);
     }
 }

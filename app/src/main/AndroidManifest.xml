@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LaravelStarterKit"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CrudActivity"></activity>
+        <activity android:name=".ApiResultActivity"></activity>
+        <activity android:name=".CrudActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
