@@ -26,21 +26,15 @@
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-            <EditText
-                android:id="@+id/edtName"
+            <TextView
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Username"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/editTextTextPassword2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword" />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text='¿Cómo quieres hacer la petición?\nRecuerda cambiar el tokem en el fichero "Conexion"'
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,31 +42,38 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnRegistrar"
+                    android:id="@+id/btnInvitado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Registrar" />
+                    android:text="Invitado" />
 
                 <Button
                     android:id="@+id/btnLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Login" />
+                    android:text="Usuario registrado" />
+
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnInvitado"
+            <TextView
+                android:id="@+id/txtEstadoApiTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Invitado" />
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:text="¿El token funciona?"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txtEstadoApi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="TextView" />
+                android:layout_marginTop="10dp"
+                android:text="TextView"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
