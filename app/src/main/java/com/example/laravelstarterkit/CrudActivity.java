@@ -26,12 +26,14 @@ public class CrudActivity extends AppCompatActivity {
     public static final int SEARCH = 2;
     public static final int UPDATE = 3;
     public static final int DELETE = 4;
+    public static final int STORE = 5;
 
     private String token;
     private Button btnIndex;
     private Button btnSearch;
     private Button btnUpdate;
     private Button btnDelete;
+    private Button btnStore;
     private EditText edtIdSearch;
     private EditText edtIdUpdateDelete;
     private ProgressDialog progressDialog;
@@ -49,6 +51,7 @@ public class CrudActivity extends AppCompatActivity {
         btnSearch = (Button) findViewById(R.id.btnSearch);
         btnUpdate = (Button) findViewById(R.id.btnUpdate);
         btnDelete = (Button) findViewById(R.id.btnDelete);
+        btnStore = (Button) findViewById(R.id.btnStore);
         edtIdSearch = (EditText) findViewById(R.id.edtSearchId);
         edtIdUpdateDelete = (EditText) findViewById(R.id.edtUpdateDeleteId);
 
@@ -79,6 +82,13 @@ public class CrudActivity extends AppCompatActivity {
                     String idString = String.valueOf(id);
                     startApiResult(SEARCH, idString);
                 }
+            }
+        });
+
+        btnStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startApiResult(STORE, null);
             }
         });
 

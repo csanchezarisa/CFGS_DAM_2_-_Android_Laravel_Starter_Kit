@@ -84,6 +84,17 @@ public class ApiResultActivity extends AppCompatActivity {
             case CrudActivity.DELETE: url += "api/apios/" + id;
                 client.delete(url, this.handler);
                 break;
+
+            case CrudActivity.STORE: url += "api/apios";
+
+                // Se crean los parámetros "simulando" que se ha rellenado un formulario
+                RequestParams createParams = new RequestParams();
+                createParams.add("nom", "Apio desde android");
+                createParams.add("tipus", "Apio creado desde android");
+                createParams.add("caducitat", "2000-01-01");
+
+                client.post(url, createParams, this.handler);
+                break;
         }
     }
 
