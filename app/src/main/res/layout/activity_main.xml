@@ -32,30 +32,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text='¿Cómo quieres hacer la petición?\nRecuerda cambiar el tokem en el fichero "Conexion"'
+                android:text="¿Cómo quieres hacer la petición?\nRecuerda que debes generar el token en nombre del usuario con el que vas a iniciar la sesión"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/edtToken"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Token"
+                android:inputType="textPersonName|text" />
 
-                <Button
-                    android:id="@+id/btnInvitado"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Invitado" />
+            <Button
+                android:id="@+id/btnTokenLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Iniciar con token" />
 
-                <Button
-                    android:id="@+id/btnLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Usuario registrado" />
-
-            </LinearLayout>
+            <Button
+                android:id="@+id/btnInvitadoLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="Iniciar sin token" />
 
             <TextView
                 android:id="@+id/txtEstadoApiTitle"
@@ -63,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:text="¿El token funciona?"
+                android:text="¿Hay conexión con el servidor Laravel?"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -73,6 +75,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:text="TextView"
+                android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </LinearLayout>
     </ScrollView>
