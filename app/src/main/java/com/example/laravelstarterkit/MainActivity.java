@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Bundle para pasar el token vacío
                 Bundle data = new Bundle();
-                data.putString("token", "token");
+                data.putString("token", "");
 
                 // Intent para abrir la nueva activity
                 Intent intent = new Intent(getApplicationContext(), CrudActivity.class);
