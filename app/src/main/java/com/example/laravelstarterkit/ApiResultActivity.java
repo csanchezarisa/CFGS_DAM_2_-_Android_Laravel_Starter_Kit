@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -27,6 +28,7 @@ public class ApiResultActivity extends AppCompatActivity {
     private String id;
     private ProgressDialog progressDialog;
     private AsyncHttpResponseHandler handler;
+    private String token;
 
     private TextView txtStautsCode;
     private TextView txtResponse;
@@ -50,12 +52,14 @@ public class ApiResultActivity extends AppCompatActivity {
         // Se recupera el tipo de llamada y el id
         tipoLlamda = getIntent().getExtras().getInt("tipo_llamada");
         id = getIntent().getExtras().getString("id");
+        token = getIntent().getExtras().getString("token");
 
         hacerPeticionApi();
     }
 
     private void hacerPeticionApi() {
         AsyncHttpClient client = new AsyncHttpClient();
+        client.addHeader("Authorization", "Bearer " + token);
 
         crearHandlerParaPeticion();
 
@@ -175,6 +179,8 @@ public class ApiResultActivity extends AppCompatActivity {
                     ArrayAdapter<ApioClass> adapter = new ArrayAdapter<ApioClass>(getApplicationContext(), android.R.layout.simple_list_item_1, apios);
                     listView.setAdapter(adapter);
                 }
+
+                mostrarToast("Petición realizada correctamente");
             }
 
             @Override
@@ -183,16 +189,17 @@ public class ApiResultActivity extends AppCompatActivity {
 
                 txtStautsCode.setText(String.valueOf(statusCode));
                 txtResponse.setText(error.toString());
-
+                mostrarToast("Error haciendo la petición");
             }
         };
     }
 
-    private void peticionCorrecta() {
-
-    }
-
-    private void peticionIncorrecta() {
-
+    /** Muestra un toast largo
+     * @param mensaje String con el contenido del toast */
+    private void mostrarToast(String mensaje) {
+        Toast toast = new Toast(this);
+        toast.setText(mensaje);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.show();
     }
 }

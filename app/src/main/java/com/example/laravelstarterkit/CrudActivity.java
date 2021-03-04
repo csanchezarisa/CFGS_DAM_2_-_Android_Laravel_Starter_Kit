@@ -241,6 +241,7 @@ public class CrudActivity extends AppCompatActivity {
         Bundle data = new Bundle();
         data.putInt("tipo_llamada", tipoLlamada);
         if (id == null) id = "";
+        data.putString("token", token);
         data.putString("id", id);
         intent.putExtras(data);
         startActivity(intent);
