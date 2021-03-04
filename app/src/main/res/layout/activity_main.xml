@@ -32,9 +32,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="¿Cómo quieres hacer la petición?\nRecuerda que debes generar el token en nombre del usuario con el que vas a iniciar la sesión"
+                android:text="¿Cómo quieres hacer la petición?\nRecuerda que debes generar el token en nombre del usuario con el que vas a iniciar la sesión\nY modificar la url base en el fichero Conexión"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/txtEstadoApi2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:text="Recuerda que la IP enrutadora entre el emulador y el localhost es 10.0.2.2:(puerto)"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <EditText
                 android:id="@+id/edtToken"
